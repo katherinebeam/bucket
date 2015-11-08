@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :bucket_lists do
-    resources :bucketlist_items
+    resources :bucketlist_items do
+      member do
+        patch :complete
+      end
+    end
   end
   root 'bucket_lists#index'
 
