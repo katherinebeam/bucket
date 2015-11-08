@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @bucket_list.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @bucket_list.description %>
+</p>
+
+<%= link_to 'Edit', edit_bucket_list_path(@bucket_list) %> |
+<%= link_to 'Back', bucket_lists_path %>
