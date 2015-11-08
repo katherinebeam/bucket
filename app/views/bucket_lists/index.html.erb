@@ -13,7 +13,7 @@
 
   <tbody>
     <% @bucket_lists.each do |bucket_list| %>
-      <tr>
+      <tr id="<%= dom_id(bucket_list) %>">
         <td><%= bucket_list.title %></td>
         <td><%= bucket_list.description %></td>
         <td><%= link_to 'Show', bucket_list %></td>

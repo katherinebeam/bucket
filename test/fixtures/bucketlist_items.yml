@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bucket_list_id: 
+  content: MyString
+
+two:
+  bucket_list_id: 
+  content: MyString
