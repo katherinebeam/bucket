@@ -6,4 +6,11 @@ class BucketList < ActiveRecord::Base
   validates :description, presence: true
   validates :description, length: { minimum: 5 }
 
+  def has_completed_items?
+    bucketlist_items.complete.size > 0
+  end
+
+  def has_incomplete_items?
+    bucketlist_items.incomplete.size > 0
+  end
 end

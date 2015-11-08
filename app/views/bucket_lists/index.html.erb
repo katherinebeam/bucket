@@ -1,31 +1,18 @@
-<p id="notice"><%= notice %></p>
+<h1>My Bucket Lists</h1>
 
-<h1>Listing Bucket Lists</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @bucket_lists.each do |bucket_list| %>
-      <tr id="<%= dom_id(bucket_list) %>">
-        <td><%= bucket_list.title %></td>
-        <td><%= bucket_list.description %></td>
-        <td>
-          <%= link_to 'List Items', bucket_list_bucketlist_items_path(bucket_list) %>
-          <%= link_to 'Show', bucket_list %>
-          <%= link_to 'Edit', edit_bucket_list_path(bucket_list) %>
-          <%= link_to 'Destroy', bucket_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @bucket_lists.each do |bucket_list| %>
+<div class="bucket_list" id="<%= dom_id(bucket_list) %>">
+  <h2><%= bucket_list.title %></h2>
+  <p><%= bucket_list.description %></p>
+  <ul class="functions">
+    <li><%= link_to 'List Items', bucket_list_bucketlist_items_path(bucket_list) %></li>
+    <li><%= link_to 'Show', bucket_list %></li>
+    <li><%= link_to 'Edit', edit_bucket_list_path(bucket_list) %></li>
+    <li><%= link_to 'Destroy', bucket_list, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+  </ul>
+  <br>
+</div>
+<% end %>
 
 <br>
 

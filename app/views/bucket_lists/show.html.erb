@@ -1,14 +1,26 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @bucket_list.title %></h1>
 
-<p>
-  <strong>Title:</strong>
-  <%= @bucket_list.title %>
-</p>
+<h2><%= @bucket_list.description %></h2>
 
-<p>
-  <strong>Description:</strong>
-  <%= @bucket_list.description %>
-</p>
+<% if @bucket_list.has_incomplete_items? %>
+<h3>Incomplete Items:</h3>
+
+<ul>
+  <% @bucket_list.bucketlist_items.incomplete.each do |bucketlist_item| %>
+  <li><%= bucketlist_item.content %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<% if @bucket_list.has_completed_items? %>
+<h3>Complete Items:</h3>
+
+<ul>
+  <% @bucket_list.bucketlist_items.complete.each do |bucketlist_item| %>
+  <li><%= bucketlist_item.content %></li>
+  <% end %>
+</ul>
+<% end %>
 
 <%= link_to 'Edit', edit_bucket_list_path(@bucket_list) %> |
 <%= link_to 'Back', bucket_lists_path %>
