@@ -1,0 +1,15 @@
+<% if @bucketlist_item.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@bucketlist_item.errors.count, "error") %> prohibited this item from being saved: </h2>
+    <ul>
+    <% @bucketlist_item.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form.label :content %>
+<%= form.text_field :content %>
+
+<%= form.submit 'Save' %>

@@ -1,17 +1,5 @@
+<h1><%= @bucket_list.title %> - Add Bucket List Item</h1>
+
 <%= form_for [@bucket_list, @bucketlist_item] do |form| %>
-  <% if @bucketlist_item.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@bucketlist_item.errors.count, "error") %> prohibited this item from being saved: </h2>
-      <ul>
-      <% @bucketlist_item.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <%= form.label :content %>
-  <%= form.text_field :content %>
-
-  <%= form.submit 'Save' %>
+  <%= render partial: form %>
 <% end %>

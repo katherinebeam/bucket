@@ -4,7 +4,8 @@
   <% @bucket_list.bucketlist_items.each do |bucketlist_item| %>
   <li id="<%= dom_id(bucketlist_item) %>">
     <%= bucketlist_item.content %>
-    <%= link_to 'Edit', edit_bucket_list_bucketlist_item_path(@bucket_list, bucketlist_item) %>
+    <%= link_to 'Edit', edit_bucket_list_bucketlist_item_path(bucketlist_item) %>
+    <%= link_to 'Delete', bucket_list_bucketlist_item_path(bucketlist_item), method: :delete, data: { confirm: "Are you sure?" } %>
   </li>
   <% end %>
 </ul>
