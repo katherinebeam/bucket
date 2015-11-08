@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :bucket_lists
+  get 'bucketlist_items/index'
+
+  resources :bucket_lists do
+    resources :bucketlist_items
+  end
   root 'bucket_lists#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

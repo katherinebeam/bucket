@@ -16,9 +16,12 @@
       <tr id="<%= dom_id(bucket_list) %>">
         <td><%= bucket_list.title %></td>
         <td><%= bucket_list.description %></td>
-        <td><%= link_to 'Show', bucket_list %></td>
-        <td><%= link_to 'Edit', edit_bucket_list_path(bucket_list) %></td>
-        <td><%= link_to 'Destroy', bucket_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to 'List Items', bucket_list_bucketlist_items_path(bucket_list) %>
+          <%= link_to 'Show', bucket_list %></td>
+          <%= link_to 'Edit', edit_bucket_list_path(bucket_list) %></td>
+          <%= link_to 'Destroy', bucket_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </td>
       </tr>
     <% end %>
   </tbody>
