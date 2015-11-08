@@ -1,14 +1,14 @@
 <h1><%= @bucket_list.title %></h1>
 
-<ul class="bucketlist_items">
+<table class="bucketlist_items">
   <% @bucket_list.bucketlist_items.each do |bucketlist_item| %>
-  <li id="<%= dom_id(bucketlist_item) %>">
-    <%= bucketlist_item.content %>
-    <%= link_to 'Edit', edit_bucket_list_bucketlist_item_path(bucketlist_item) %>
-    <%= link_to 'Delete', bucket_list_bucketlist_item_path(bucketlist_item), method: :delete, data: { confirm: "Are you sure?" } %>
-  </li>
+  <tr id="<%= dom_id(bucketlist_item) %>">
+    <td><%= bucketlist_item.content %></td>
+    <td><%= link_to 'Edit', edit_bucket_list_bucketlist_item_path(bucketlist_item) %>
+    <%= link_to 'Delete', bucket_list_bucketlist_item_path(bucketlist_item), method: :delete, data: { confirm: "Are you sure?" } %></td>
+  </tr>
   <% end %>
-</ul>
+</table>
 
 <p>
   <%= link_to 'New Bucket List Item', new_bucket_list_bucketlist_item_path %>
