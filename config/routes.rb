@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users
   resources :bucket_lists do
     resources :bucketlist_items do
       member do
