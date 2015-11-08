@@ -1,2 +1,11 @@
-<h1>BucketlistItems#index</h1>
-<p>Find me in app/views/bucketlist_items/index.html.erb</p>
+<h1><%= @bucket_list.title %></h1>
+
+<ul class="bucketlist_items">
+  <% @bucket_list.bucketlist_items.each do |item| %>
+  <li><%= item.content %></li>
+  <% end %>
+</ul>
+
+<p>
+  <%= link_to 'New Bucket List Item', new_bucket_list_bucketlist_item_path %>
+</p>

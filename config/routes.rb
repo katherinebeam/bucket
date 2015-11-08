@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'bucketlist_items/index'
-
   resources :bucket_lists do
     resources :bucketlist_items
   end
