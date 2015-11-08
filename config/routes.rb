@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   get 'user_sessions/new'
-
   get 'user_sessions/create'
+  resources :user_sessions, only: [:new, :create]
 
-  resources :users
   resources :bucket_lists do
     resources :bucketlist_items do
       member do
@@ -12,7 +11,10 @@ Rails.application.routes.draw do
     end
   end
   root 'bucket_lists#index'
-
+  get 'signup' => 'users#new'
+  post 'signup' => 'bucket_lists#index'
+  get 'users' => 'bucket_lists#index'
+  post 'users' => 'bucket_lists#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
