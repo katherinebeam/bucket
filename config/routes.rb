@@ -13,5 +13,7 @@ Rails.application.routes.draw do
     end
   end
   root 'bucket_lists#index'
+  resources :post_attachments
+  resources :posts
 
 end
