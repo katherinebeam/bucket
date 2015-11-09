@@ -15,7 +15,7 @@
     <% @post_attachments.each do |post_attachment| %>
       <tr>
         <td><%= post_attachment.post_id %></td>
-        <td><%= post_attachment.avatar %></td>
+        <td><%= image_tag post_attachment.avatar, :size => "150x150" %></td>
         <td><%= link_to 'Show', post_attachment %></td>
         <td><%= link_to 'Edit', edit_post_attachment_path(post_attachment) %></td>
         <td><%= link_to 'Destroy', post_attachment, method: :delete, data: { confirm: 'Are you sure?' } %></td>

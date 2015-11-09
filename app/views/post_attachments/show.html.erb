@@ -7,7 +7,7 @@
 
 <p>
   <strong>Avatar:</strong>
-  <%= @post_attachment.avatar %>
+  <%= image_tag @post_attachment.avatar_url, :size => "150x150" %>
 </p>
 
 <%= link_to 'Edit', edit_post_attachment_path(@post_attachment) %> |
