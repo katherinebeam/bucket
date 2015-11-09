@@ -1,4 +1,5 @@
 class BucketlistItemsController < ApplicationController
+  before_action :require_user
   before_action :find_bucket_list
   def index
   end
@@ -56,7 +57,7 @@ class BucketlistItemsController < ApplicationController
 
   private
   def find_bucket_list
-    @bucket_list = BucketList.find(params[:bucket_list_id])
+    @bucket_list = current_user.bucket_lists.find(params[:bucket_list_id])
   end
 
   def bucketlist_item_params

@@ -5,7 +5,7 @@ class BucketListsController < ApplicationController
   # GET /bucket_lists
   # GET /bucket_lists.json
   def index
-    @bucket_lists = BucketList.all
+    @bucket_lists = current_user.bucket_lists
   end
 
   # GET /bucket_lists/1
@@ -15,7 +15,7 @@ class BucketListsController < ApplicationController
 
   # GET /bucket_lists/new
   def new
-    @bucket_list = BucketList.new
+    @bucket_list = current_user.bucket_lists.new
   end
 
   # GET /bucket_lists/1/edit
@@ -25,14 +25,14 @@ class BucketListsController < ApplicationController
   # POST /bucket_lists
   # POST /bucket_lists.json
   def create
-    @bucket_list = BucketList.new(bucket_list_params)
+    @bucket_list = current_user.bucket_lists.new(bucket_list_params)
 
     respond_to do |format|
       if @bucket_list.save
         format.html { redirect_to @bucket_list, notice: 'Bucket list was successfully created.' }
-        format.json { render :show, status: :created, location: @bucket_list }
+        format.json { render action: 'show', status: :created, location: @bucket_list }
       else
-        format.html { render :new }
+        format.html { render action: 'new' }
         format.json { render json: @bucket_list.errors, status: :unprocessable_entity }
       end
     end
@@ -44,9 +44,9 @@ class BucketListsController < ApplicationController
     respond_to do |format|
       if @bucket_list.update(bucket_list_params)
         format.html { redirect_to @bucket_list, notice: 'Bucket list was successfully updated.' }
-        format.json { render :show, status: :ok, location: @bucket_list }
+        format.json { head :no_content}
       else
-        format.html { render :edit }
+        format.html { render action: 'edit' }
         format.json { render json: @bucket_list.errors, status: :unprocessable_entity }
       end
     end
@@ -57,7 +57,7 @@ class BucketListsController < ApplicationController
   def destroy
     @bucket_list.destroy
     respond_to do |format|
-      format.html { redirect_to bucket_lists_url, notice: 'Bucket list was successfully destroyed.' }
+      format.html { redirect_to bucket_lists_url }
       format.json { head :no_content }
     end
   end
@@ -65,7 +65,7 @@ class BucketListsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_bucket_list
-      @bucket_list = BucketList.find(params[:id])
+      @bucket_list = current_user.bucket_lists.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

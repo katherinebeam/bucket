@@ -1,4 +1,5 @@
 class BucketList < ActiveRecord::Base
+  belongs_to :user
   has_many :bucketlist_items
 
   validates :title, presence: true
