@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151109171948) do
+ActiveRecord::Schema.define(version: 20151109222301) do
 
   create_table "bucket_lists", force: :cascade do |t|
     t.string   "title"
@@ -54,10 +54,12 @@ ActiveRecord::Schema.define(version: 20151109171948) do
     t.text     "bio"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "password_reset_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email"
+  add_index "users", ["password_reset_token"], name: "index_users_on_password_reset_token"
 
 end
