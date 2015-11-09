@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'welcome/index'
+
   get "/login" => "user_sessions#new", as: :login
   delete "/logout" => "user_sessions#destroy", as: :logout
 
@@ -12,7 +14,7 @@ Rails.application.routes.draw do
       end
     end
   end
-  root 'bucket_lists#index'
+  root 'welcome#index'
   resources :post_attachments
   resources :posts
 
