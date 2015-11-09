@@ -1,4 +1,5 @@
 class BucketListsController < ApplicationController
+  before_action :require_user
   before_action :set_bucket_list, only: [:show, :edit, :update, :destroy]
 
   # GET /bucket_lists

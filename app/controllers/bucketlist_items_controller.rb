@@ -1,5 +1,7 @@
 class BucketlistItemsController < ApplicationController
+  before_action :require_user
   before_action :find_bucket_list
+
   def index
   end
 
