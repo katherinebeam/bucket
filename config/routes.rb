@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :post_attachments
+  resources :posts
   get 'user_sessions/new'
   get 'user_sessions/create'
   resources :user_sessions, only: [:new, :create]
