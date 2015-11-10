@@ -1,3 +1,23 @@
+<p>
+  <strong>First name:</strong>
+  <%= current_user.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= current_user.last_name %>
+</p>
+
+<p>
+  <strong>Picture:</strong>
+  <%= image_tag current_user.picture_url(:thumb) %>
+</p>
+
+<p>
+  <strong>Bio:</strong>
+  <%= current_user.bio %>
+</p>
+
 <h1>My Bucket Lists</h1>
 
 <% @bucket_lists.each do |bucket_list| %>
