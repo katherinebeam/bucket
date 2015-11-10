@@ -26,6 +26,7 @@
   <p><%= bucket_list.description %></p>
   <ul class="functions">
     <li><%= link_to 'List Items', bucket_list_bucketlist_items_path(bucket_list) %></li>
+    <li><%= link_to 'Album', bucket_list_post_attachments_path(bucket_list) %></li>
     <li><%= link_to 'Show', bucket_list %></li>
     <li><%= link_to 'Edit', edit_bucket_list_path(bucket_list) %></li>
     <li><%= link_to 'Destroy', bucket_list, method: :delete, data: { confirm: 'Are you sure?' } %></li>

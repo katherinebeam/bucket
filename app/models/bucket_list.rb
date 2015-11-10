@@ -3,6 +3,7 @@ class BucketList < ActiveRecord::Base
 
   belongs_to :user
   has_many :bucketlist_items
+  has_many :post_attachments
 
   validates :title, presence: true
   validates :title, length: { minimum: 3 }
