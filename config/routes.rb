@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :user_sessions, only: [:new, :create]
+  resources :password_resets, only: [:new, :create, :edit]
 
   resources :bucket_lists do
     resources :bucketlist_items do
