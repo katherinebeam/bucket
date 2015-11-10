@@ -15,6 +15,7 @@ class PostAttachmentsController < ApplicationController
   # GET /post_attachments/new
   def new
     @post_attachment = PostAttachment.new
+
   end
 
   # GET /post_attachments/1/edit
@@ -24,7 +25,11 @@ class PostAttachmentsController < ApplicationController
   # POST /post_attachments
   # POST /post_attachments.json
   def create
+<<<<<<< HEAD
     @post_attachment = @bucket_list.post_attachments.new(post_attachment_params)
+=======
+    @post_attachment = @bucket_list.post_attachments.new(post_attachment_params)   
+>>>>>>> a7c67500de421b589d67be498ea1267b87cc39b2
 
     respond_to do |format|
       if @post_attachment.save
@@ -57,6 +62,7 @@ class PostAttachmentsController < ApplicationController
       end
     end
 
+<<<<<<< HEAD
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_post_attachment
@@ -72,3 +78,14 @@ class PostAttachmentsController < ApplicationController
         params.require(:post_attachment).permit(:avatar)
       end
   end
+=======
+    def set_bucket_list
+      @bucket_list = BucketList.find(params[:bucket_list_id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def post_attachment_params
+      params.require(:post_attachment).permit(:avatar)
+    end
+end
+>>>>>>> a7c67500de421b589d67be498ea1267b87cc39b2
