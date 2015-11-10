@@ -1,10 +1,10 @@
 class PostAttachmentsController < ApplicationController
   before_action :set_post_attachment, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_bucket_list
   # GET /post_attachments
   # GET /post_attachments.json
   def index
-    @post_attachments = PostAttachment.all
+    @post_attachments = @bucket_list.post_attachments.all
   end
 
   # GET /post_attachments/1
@@ -15,6 +15,7 @@ class PostAttachmentsController < ApplicationController
   # GET /post_attachments/new
   def new
     @post_attachment = PostAttachment.new
+
   end
 
   # GET /post_attachments/1/edit
@@ -24,11 +25,11 @@ class PostAttachmentsController < ApplicationController
   # POST /post_attachments
   # POST /post_attachments.json
   def create
-    @post_attachment = PostAttachment.new(post_attachment_params)
+    @post_attachment = @bucket_list.post_attachments.new(post_attachment_params)   
 
     respond_to do |format|
       if @post_attachment.save
-        format.html { redirect_to @post_attachment, notice: 'Post attachment was successfully created.' }
+        format.html { redirect_to bucket_list_post_attachment_path(@bucket_list, @post_attachment), notice: 'Post attachment was successfully created.' }
         format.json { render :show, status: :created, location: @post_attachment }
       else
         format.html { render :new }
@@ -63,8 +64,12 @@ end
       @post_attachment = PostAttachment.find(params[:id])
     end
 
+    def set_bucket_list
+      @bucket_list = BucketList.find(params[:bucket_list_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_attachment_params
-      params.require(:post_attachment).permit(:post_id, :avatar)
+      params.require(:post_attachment).permit(:avatar)
     end
 end

@@ -1,5 +1,6 @@
 class BucketlistItem < ActiveRecord::Base
   belongs_to :bucket_list
+  has_many :post_attachment
 
   validates :content, presence: true,
                       length: { minimum: 2 }

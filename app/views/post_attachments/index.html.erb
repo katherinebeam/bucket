@@ -5,25 +5,22 @@
 <table>
   <thead>
     <tr>
-      <th>Post</th>
       <th>Avatar</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @post_attachments.each do |post_attachment| %>
       <tr>
-        <td><%= post_attachment.post_id %></td>
         <td><%= image_tag post_attachment.avatar, :size => "150x150" %></td>
-        <td><%= link_to 'Show', post_attachment %></td>
-        <td><%= link_to 'Edit', edit_post_attachment_path(post_attachment) %></td>
-        <td><%= link_to 'Destroy', post_attachment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+    <%= link_to 'Profile', bucket_lists_path %>
+    
+    <%= link_to 'New photo', new_bucket_list_post_attachment_path(@bucket_list) %>
 
-<%= link_to 'New Post attachment', new_post_attachment_path %>

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :password_resets, only: [:new, :create, :edit]
 
   resources :bucket_lists do
+    resources :post_attachments
     resources :bucketlist_items do
       member do
         patch :complete
@@ -16,7 +17,6 @@ Rails.application.routes.draw do
     end
   end
   root 'welcome#index'
-  resources :post_attachments
   resources :posts
 
 end

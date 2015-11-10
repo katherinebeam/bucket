@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Post:</strong>
-  <%= @post_attachment.post_id %>
+  <strong>Bucket List:</strong>
+  <%= @post_attachment.bucket_list_id %>
 </p>
 
 <p>
@@ -10,5 +10,6 @@
   <%= image_tag @post_attachment.avatar_url, :size => "150x150" %>
 </p>
 
-<%= link_to 'Edit', edit_post_attachment_path(@post_attachment) %> |
-<%= link_to 'Back', post_attachments_path %>
+
+<%= link_to 'Edit', edit_bucket_list_post_attachment_path(@bucket_list, @post_attachment) %> |
+<%= link_to 'Back', bucket_list_post_attachments_path %>
