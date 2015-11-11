@@ -1,7 +1,33 @@
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1683826245185915',
+      xfbml      : true,
+      version    : 'v2.5'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
 <h1>Sign Up</h1>
 
 <%= render 'form' %>
+
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState()" data­-auto­-logout-­link="true"​>
+</fb:login-button>
+
 <div class="actions">
-  <%= f.submit "Sign Up" %>
+  <%= submit_tag "Sign Up" %>
 </div>
+
+<div id="status">
+</div>
+
 <%= link_to 'Back', users_path %>

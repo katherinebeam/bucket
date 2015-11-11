@@ -25,7 +25,11 @@ class PostAttachmentsController < ApplicationController
   # POST /post_attachments
   # POST /post_attachments.json
   def create
+<<<<<<< HEAD
+    @post_attachment = @bucket_list.post_attachments.new(post_attachment_params)
+=======
     @post_attachment = @bucket_list.post_attachments.new(post_attachment_params)   
+>>>>>>> a7c67500de421b589d67be498ea1267b87cc39b2
 
     respond_to do |format|
       if @post_attachment.save
@@ -41,29 +45,40 @@ class PostAttachmentsController < ApplicationController
   # PATCH/PUT /post_attachments/1
   # PATCH/PUT /post_attachments/1.json
   def update
-  respond_to do |format|
-    if @post_attachment.update(post_attachment_params)
-      format.html { redirect_to @post_attachment.post, notice: 'Post attachment was successfully updated.' }
-    end 
-  end
-end
-
-  # DELETE /post_attachments/1
-  # DELETE /post_attachments/1.json
-  def destroy
-    @post_attachment.destroy
     respond_to do |format|
-      format.html { redirect_to post_attachments_url, notice: 'Post attachment was successfully destroyed.' }
-      format.json { head :no_content }
+      if @post_attachment.update(post_attachment_params)
+        format.html { redirect_to @post_attachment.post, notice: 'Post attachment was successfully updated.' }
+      end
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post_attachment
-      @post_attachment = PostAttachment.find(params[:id])
+    # DELETE /post_attachments/1
+    # DELETE /post_attachments/1.json
+    def destroy
+      @post_attachment.destroy
+      respond_to do |format|
+        format.html { redirect_to post_attachments_url, notice: 'Post attachment was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
 
+<<<<<<< HEAD
+    private
+      # Use callbacks to share common setup or constraints between actions.
+      def set_post_attachment
+        @post_attachment = PostAttachment.find(params[:id])
+      end
+
+      def set_bucket_list
+        @bucket_list = BucketList.find(params[:bucket_list_id])
+      end
+
+      # Never trust parameters from the scary internet, only allow the white list through.
+      def post_attachment_params
+        params.require(:post_attachment).permit(:avatar)
+      end
+  end
+=======
     def set_bucket_list
       @bucket_list = BucketList.find(params[:bucket_list_id])
     end
@@ -73,3 +88,4 @@ end
       params.require(:post_attachment).permit(:avatar)
     end
 end
+>>>>>>> a7c67500de421b589d67be498ea1267b87cc39b2
