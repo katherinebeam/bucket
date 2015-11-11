@@ -22,6 +22,11 @@ class BucketListsController < ApplicationController
   def edit
   end
 
+  def search
+    @bucket_lists = User.where(first_name: params['term'])
+    render :index
+  end
+
   # POST /bucket_lists
   # POST /bucket_lists.json
   def create

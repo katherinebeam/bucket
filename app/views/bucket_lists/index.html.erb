@@ -1,3 +1,13 @@
+<div class="container search">
+<%= form_tag '/search' do %>
+  <%= search_field_tag :term %>
+  <%= submit_tag 'Search' %>
+<% end %>
+</div>
+
+
+
+
 <p>
   <strong>First name:</strong>
   <%= current_user.first_name %>

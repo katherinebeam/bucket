@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   end
   root 'welcome#index'
   resources :posts
+  post '/search' => 'bucket_lists#search'
 
 end
