@@ -23,7 +23,10 @@ class BucketListsController < ApplicationController
   end
 
   def search
-    @bucket_lists = User.where(first_name: params['term'])
+    @bucket_lists = current_user.bucket_lists
+    @search_results = BucketList.where("title = ? OR description = ?", params['term'], params['term'] )
+
+    # Person.find_by_user_name_and_password(user_name, password) 
     render :index
   end
 

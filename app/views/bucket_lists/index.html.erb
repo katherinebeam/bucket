@@ -6,6 +6,22 @@
 </div>
 
 
+<p>
+
+
+  <strong> Search Results:</strong>
+  <% unless @search_results.nil? %>
+    <% @search_results.each do |search_results| %>
+      <br>
+      <%= search_results.title %><br>
+      <%= search_results.description %><br>
+      <%= link_to search_results.title, bucket_list_path(search_results) %><br>
+
+    <% end %>
+  <% end %>
+
+</p>
+
 
 
 <p>
