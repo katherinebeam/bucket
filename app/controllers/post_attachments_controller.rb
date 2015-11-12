@@ -74,8 +74,5 @@ class PostAttachmentsController < ApplicationController
       def post_attachment_params
         params.require(:post_attachment).permit(:avatar)
       end
-  end
-
-
 end
 
