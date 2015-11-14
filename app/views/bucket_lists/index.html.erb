@@ -1,27 +1,3 @@
-<div class="container search">
-<%= form_tag '/search' do %>
-  <%= search_field_tag :term %>
-  <%= submit_tag 'Search' %>
-<% end %>
-</div>
-
-
-<p>
-
-
-  <strong> Search Results:</strong>
-  <% unless @search_results.nil? %>
-    <% @search_results.each do |search_results| %>
-      <br>
-      <%= search_results.title %><br>
-      <%= search_results.description %><br>
-      <%= link_to search_results.title, bucket_list_path(search_results) %><br>
-
-    <% end %>
-  <% end %>
-
-</p>
-
 
 
 <p>
@@ -47,20 +23,19 @@
 <h1>My Bucket Lists</h1>
 
 <% @bucket_lists.each do |bucket_list| %>
-<div class="bucket_list" id="<%= dom_id(bucket_list) %>">
-  <h2><%= bucket_list.title %></h2>
-  <p><%= bucket_list.description %></p>
-  <ul class="functions">
-    <li><%= link_to 'List Items', bucket_list_bucketlist_items_path(bucket_list) %></li>
-    <li><%= link_to 'Album', bucket_list_post_attachments_path(bucket_list) %></li>
-    <li><%= link_to 'Show', bucket_list %></li>
-    <li><%= link_to 'Edit', edit_bucket_list_path(bucket_list) %></li>
-    <li><%= link_to 'Destroy', bucket_list, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-  </ul>
-  <br>
-</div>
+  <div class="bucket_list" id="<%= dom_id(bucket_list) %>">
+    <h2><%= bucket_list.title %></h2>
+    <p><%= bucket_list.description %></p>
+    <ul class="functions">
+      <li><%= link_to 'List Items', bucket_list_bucketlist_items_path(bucket_list) %></li>
+      <li><%= link_to 'Album', bucket_list_post_attachments_path(bucket_list) %></li>
+      <li><%= link_to 'Show', bucket_list %></li>
+      <li><%= link_to 'Edit', edit_bucket_list_path(bucket_list) %></li>
+      <li><%= link_to 'Destroy', bucket_list, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+    </ul>
+    <br>
+  </div>
 <% end %>
 
 <br>
-
 <%= link_to 'New Bucket list', new_bucket_list_path %>

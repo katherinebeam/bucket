@@ -191,26 +191,54 @@ body{
 			    	<h3 class="panel-title">Please Sign Up</h3>
 			 	</div>
 			  	<div class="panel-body">
-			    	<form accept-charset="UTF-8" role="form">
-                    <fieldset>
-			    	  	<div class="form-group">
-			    		    <input class="form-control" placeholder="E-mail" name="email" type="text">
-			    		</div>
-			    		<div class="form-group">
-			    			<input class="form-control" placeholder="Password" name="password" type="password" value="">
-			    		</div>
-			    		<div class="checkbox">
-			    	    	<label>
-			    	    		<input name="remember" type="checkbox" value="Remember Me"> Remember Me
-			    	    	</label>
-			    	    </div>
-			    		<input class="btn btn-lg btn-success btn-block" type="submit" value="Submit">
-			    	</fieldset>
+			    	<form accept-charset="UTF-8" action="/users" class="new_user" id="new_user" method="post" role="form">
+              <%= form_for(@user) do |f| %>
+                <% if @user.errors.any? %>
+                  <div id="error_explanation">
+                      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this product from being saved:</h2>
+                      <ul>
+                        <% @user.errors.full_messages.each do |message| %>
+                          <li><%= message %></li><br>
+                        <% end %>
+                      </ul>
+                    </div><br>
+                <% end %>
+                <fieldset>
+  			    	  	<div class="form-group">
+                    <%= label_tag :first_name, "First Name:" %>
+                    <%= f.text_field :first_name, class: 'form-control', autofocus: true, placeholder: 'First Name' %>
+  			    		  </div>
+                  <div class="form-group">
+                    <%= label_tag :last_name, "Last Name:" %>
+                    <%= f.text_field :last_name, class: 'form-control', placeholder: 'Last Name' %>
+                  </div>
+                  <div class="form-group">
+                    <%= label_tag :username, "Username:" %>
+                    <%= f.text_field :username, class: 'form-control', placeholder: 'Username' %>
+                  </div>
+                  <div class="form-group">
+                    <%= label_tag :email, "Email:" %>
+                    <%= f.email_field :email, class: 'form-control', placeholder: 'Email' %>
+                  </div>
+                  <div class="form-group">
+                    <%= label_tag :password, "Password:" %>
+                    <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
+                  </div>
+                  <div class="form-group">
+                    <%= label_tag :bio, "Bio:" %>
+                    <%= f.text_area :bio, class: 'form-control', placeholder: 'Bio' %>
+                  </div>
+                  <div class="form-group">
+                    <%= label_tag :picture, "Profile Picture:" %>
+                    <%= f.file_field :picture%>
+                  </div>
+                  <div class="actions">
+  			    		       <input class="btn btn-lg btn-success btn-block" name="commit" type="submit" value="Sign Up!">
+                  </div>
+  			    	</fieldset>
 			      	</form>
+              <% end %>
 			    </div>
 			</div>
-		</div>
-	</div>
-</div>
 </body>
 </html>
