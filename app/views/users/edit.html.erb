@@ -2,7 +2,9 @@
 
 <%= render 'form' %>
 <div class="actions">
-  <%= f.submit "Confirm Changes" %>
+  <div class="actions">
+       <input class="btn btn-lg btn-success btn-block" name="commit" type="submit" value="Confirm Changes">
+  </div>
 </div>
 <%= link_to 'Show', @user %> |
 <%= link_to 'Back', users_path %>
